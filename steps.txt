@@ -1,0 +1,14 @@
+https://ducanh-next-pwa.vercel.app/docs/next-pwa/custom-worker
+
+npm i @ducanh2912/next-pwa
+
+npm install firebase react-firebase-hooks
+
+npx shadcn@latest init -d
+npx shadcn@latest add button
+npx shadcn@latest add scroll-area
+
+npm run dev
+npm run build
+firebase deploy
+npm run deploy
