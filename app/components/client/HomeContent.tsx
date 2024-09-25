@@ -3,7 +3,16 @@
 import { Button } from "@/components/ui/button"
 import { User, BarChart, Settings } from "lucide-react"
 
-export default function HomeContent({ setCurrentPage }) {
+interface ModuleButtonProps {
+    icon: React.ComponentType;
+    label: string;
+    onClick: () => void;
+  }
+
+
+export default function HomeContent({ setCurrentPage }:{
+    setCurrentPage: (page: string) => void;
+  }) {
     return (
         <>
             <h2 className="text-2xl font-semibold mb-6 text-[#1a1a2e]">Choose a Module</h2>
@@ -14,13 +23,13 @@ export default function HomeContent({ setCurrentPage }) {
     )
 }
 
-function ModuleButton({ icon: Icon, label, onClick }) {
+function ModuleButton({  label, onClick }: ModuleButtonProps) {
     return (
         <Button
             className="w-full max-w-sm h-20 text-lg justify-start px-6 bg-[#f0f1f5] text-[#1a1a2e] hover:bg-[#e0e1e5] border border-[#a5abaf]"
             onClick={onClick}
         >
-            <Icon className="mr-4 h-6 w-6 text-[#140a9a]" />
+            {/*<Icon className="mr-4 h-6 w-6 text-[#140a9a]" />*/}
             {label}
         </Button>
     )

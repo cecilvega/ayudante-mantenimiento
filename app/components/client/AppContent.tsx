@@ -28,7 +28,7 @@ export default function AppContent() {
     return (
         <>
             {renderContent()}
-            <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <Navigation />
         </>
     )
 }
