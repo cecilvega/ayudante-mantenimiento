@@ -1,12 +1,21 @@
 import { initializeApp } from 'firebase/app';
 import { initializeFirestore, persistentLocalCache, persistentSingleTabManager } from 'firebase/firestore';
 
+// const firebaseConfig = {
+//     apiKey: "AIzaSyCm-zFwCHudHp3Cg6_FvaoaAoS0BvbTWwk",
+//     authDomain: "maintenance-mate-37ba3.firebaseapp.com",
+//     databaseURL: "https://maintenance-mate-37ba3.firebaseio.com",
+//     projectId: "maintenance-mate-37ba3",
+//     storageBucket: "maintenance-mate-37ba3.appspot.com",
+//     messagingSenderId: "921935745153",
+//     appId: "1:921935745153:web:133a82d69b054fcbe23d80"
+// };
 const firebaseConfig = {
     apiKey: "AIzaSyCm-zFwCHudHp3Cg6_FvaoaAoS0BvbTWwk",
-    authDomain: "maintenance-mate-37ba3.firebaseapp.com",
-    databaseURL: "https://maintenance-mate-37ba3.firebaseio.com",
-    projectId: "maintenance-mate-37ba3",
-    storageBucket: "maintenance-mate-37ba3.appspot.com",
+    authDomain: "ayudante-mantenimiento.firebaseapp.com",
+    databaseURL: "https://ayudante-mantenimiento.firebaseio.com",
+    projectId: "ayudante-mantenimiento",
+    storageBucket: "ayudante-mantenimiento.appspot.com",
     messagingSenderId: "921935745153",
     appId: "1:921935745153:web:133a82d69b054fcbe23d80"
 };

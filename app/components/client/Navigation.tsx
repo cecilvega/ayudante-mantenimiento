@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Home, User, BarChart, Settings } from "lucide-react";
+import { Home, User, BarChart, Settings, UserCheck } from "lucide-react";
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navigation() {
@@ -49,6 +49,15 @@ export default function Navigation() {
                 onClick={() => router.push('/entrega-componentes')}
             >
                 <Settings className="h-6 w-6" />
+            </Button>
+
+            <Button
+                variant="ghost"
+                size="icon"
+                className={`hover:text-[#3d34e5] ${pathname === "/registro-asistencia" ? "text-[#140a9a]" : "text-[#4a4a68]"}`}
+                onClick={() => router.push('/registro-asistencia')}
+            >
+                <UserCheck className="h-6 w-6" />
             </Button>
         </nav>
     );

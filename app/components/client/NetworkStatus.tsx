@@ -12,10 +12,8 @@ export default function NetworkStatus() {
         window.addEventListener('online', handleOnline);
         window.addEventListener('offline', handleOffline);
 
-        // Set initial network status
         setIsOnline(navigator.onLine);
 
-        // Cleanup
         return () => {
             window.removeEventListener('online', handleOnline);
             window.removeEventListener('offline', handleOffline);
@@ -23,10 +21,8 @@ export default function NetworkStatus() {
     }, []);
 
     return (
-        <div className={`network-status fixed top-0 right-0 m-4 p-2 rounded ${
-            isOnline ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-        }`}>
-            {isOnline ? '🟢 Online' : '🔴 Offline'}
-        </div>
+        <div className={`w-3 h-3 rounded-full ${
+            isOnline ? 'bg-green-500' : 'bg-red-500'
+        }`} title={isOnline ? 'Online' : 'Offline'} />
     );
 }
