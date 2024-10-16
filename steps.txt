@@ -10,6 +10,12 @@ npx shadcn@latest add scroll-area
 npx shadcn@latest add input
 npx shadcn@latest add label
 npx shadcn@latest add select
+npx shadcn@latest add card
+npx shadcn@latest add dialog
+npx shadcn@latest add tabs
+npx shadcn@latest add popover
+npx shadcn@latest add calendar
+npx shadcn@latest add badge
 
 npm run dev
 npm run build
