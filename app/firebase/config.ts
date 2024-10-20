@@ -1,41 +1,25 @@
-import { initializeApp } from 'firebase/app';
-import { initializeFirestore, persistentLocalCache, persistentSingleTabManager } from 'firebase/firestore';
+import { initializeApp, getApps } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCm-zFwCHudHp3Cg6_FvaoaAoS0BvbTWwk",
-//     authDomain: "maintenance-mate-37ba3.firebaseapp.com",
-//     databaseURL: "https://maintenance-mate-37ba3.firebaseio.com",
-//     projectId: "maintenance-mate-37ba3",
-//     storageBucket: "maintenance-mate-37ba3.appspot.com",
-//     messagingSenderId: "921935745153",
-//     appId: "1:921935745153:web:133a82d69b054fcbe23d80"
-// };
 const firebaseConfig = {
-    apiKey: "AIzaSyCm-zFwCHudHp3Cg6_FvaoaAoS0BvbTWwk",
+    apiKey: "AIzaSyBH5VGe8Urirozo5EYdUuzjBC6UtaweEaI",
     authDomain: "ayudante-mantenimiento.firebaseapp.com",
     databaseURL: "https://ayudante-mantenimiento.firebaseio.com",
     projectId: "ayudante-mantenimiento",
     storageBucket: "ayudante-mantenimiento.appspot.com",
-    messagingSenderId: "921935745153",
-    appId: "1:921935745153:web:133a82d69b054fcbe23d80"
+    messagingSenderId: "951868294353",
+    appId: "1:951868294353:web:af69e2c183438359b8b1f0"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = initializeFirestore(app, {
-    localCache: persistentLocalCache({ tabManager: persistentSingleTabManager({}) }),
-})
-// enableIndexedDbPersistence(db, { synchronizeTabs: true })
-//     .then(() => console.log("Enabled offline persistence"))
-//     .catch((error) => {
-//       if (error.code == "failed-precondition") {
-//         // Multiple tabs open, persistence can only be enabled
-//         // in one tab at a a time.
-//         // ...
-//       } else if (error.code == "unimplemented") {
-//         // The current browser does not support all of the
-//         // features required to enable persistence
-//         // ...
-//       }
-//     });
+let app;
+let db;
+let auth;
 
-export { db };
+if (typeof window !== 'undefined' && !getApps().length) {
+    app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    auth = getAuth(app);
+}
+
+export { db, auth };

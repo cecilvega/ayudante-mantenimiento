@@ -16,6 +16,8 @@ npx shadcn@latest add tabs
 npx shadcn@latest add popover
 npx shadcn@latest add calendar
 npx shadcn@latest add badge
+npx shadcn@latest add alert
+npx shadcn@latest add sheet
 
 npm run dev
 npm run build
