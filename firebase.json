@@ -4,7 +4,12 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "/app/admin/staff/AdminAsistenciasPageArchived.tsx",
+      "/app/admin/staff/AdminAsistenciasPageArchived.tsx",
+      "/app/attendance/AsistenciaConstants.tsx",
+      "/app/attendance/RegistroAsistenciaArchived.tsx",
+      "/app/attendance/RegistroAsistencia.tsx"
     ]
   }
 }

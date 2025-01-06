@@ -4,6 +4,8 @@ npm i @ducanh2912/next-pwa
 
 npm install firebase react-firebase-hooks
 
+npm install framer-motion
+
 npx shadcn@latest init -d
 npx shadcn@latest add button
 npx shadcn@latest add scroll-area
@@ -18,6 +20,13 @@ npx shadcn@latest add calendar
 npx shadcn@latest add badge
 npx shadcn@latest add alert
 npx shadcn@latest add sheet
+npx shadcn@latest add collapsible
+npx shadcn@latest add dropdown-menu
+npx shadcn@latest add separator
+npx shadcn@latest add tooltip
+npx shadcn@latest add drawer
+npx shadcn@latest add textarea
+npx shadcn@latest add alert-dialog
 
 npm run dev
 npm run build

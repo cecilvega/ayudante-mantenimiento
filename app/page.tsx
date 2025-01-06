@@ -1,82 +1,66 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { Button } from "@/components/ui/button"
-import Link from 'next/link'
-import { Card, CardContent } from "@/components/ui/card"
-import { ClipboardListIcon, ShieldIcon, WrenchIcon, BoxIcon } from 'lucide-react'
-import Layout from './components/layout/Layout'
-import ProtectedRoute from '@/app/components/ProtectedRoute'
+import React from "react";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  BoxIcon,
+  ClipboardListIcon,
+  ShieldIcon,
+  WrenchIcon,
+} from "lucide-react";
+import MainLayout from "./components/layout/MainLayout";
+import ProtectedRoute from "@/app/components/ProtectedRoute";
+import { motion } from "framer-motion";
 
 export default function Home() {
-    return (
-        <ProtectedRoute>
-            <Layout>
-                <div className="min-h-screen bg-gray-50 flex flex-col">
-                    <main className="flex-grow flex items-center justify-center p-4">
-                        <Card className="w-full max-w-6xl mx-auto shadow-lg">
-                            <CardContent className="p-6">
-                                <h1 className="text-4xl font-bold text-center text-[#140a9a] mb-8 tracking-tight">
-                                    Ayudante Mantenimiento
-                                </h1>
-                                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                                    <Link href="/registro-asistencia" passHref className="blo   ck h-full">
-                                        <Button
-                                            variant="outline"
-                                            className="w-full h-full min-h-[10rem] text-center flex flex-col items-center justify-center space-y-4 p-4 hover:bg-gray-100 transition-colors duration-300 border-2 border-[#140a9a]"
-                                        >
-                                            <ClipboardListIcon className="h-12 w-12 sm:h-16 sm:w-16 text-[#140a9a]" />
-                                            <div>
-                                                <h3 className="text-lg sm:text-xl font-semibold text-[#140a9a]">Registro de Asistencia</h3>
-                                                <p className="text-xs sm:text-sm text-gray-600">Gestionar asistencia diaria</p>
-                                            </div>
-                                        </Button>
-                                    </Link>
-
-                                    <Link href="/admin" passHref className="block h-full">
-                                        <Button
-                                            variant="outline"
-                                            className="w-full h-full min-h-[10rem] text-center flex flex-col items-center justify-center space-y-4 p-4 hover:bg-gray-100 transition-colors duration-300 border-2 border-[#140a9a]"
-                                        >
-                                            <ShieldIcon className="h-12 w-12 sm:h-16 sm:w-16 text-[#140a9a]" />
-                                            <div>
-                                                <h3 className="text-lg sm:text-xl font-semibold text-[#140a9a]">Administración</h3>
-                                                <p className="text-xs sm:text-sm text-gray-600">Acceder al panel de administración</p>
-                                            </div>
-                                        </Button>
-                                    </Link>
-
-                                    <Link href="/mantenimiento" passHref className="block h-full">
-                                        <Button
-                                            variant="outline"
-                                            className="w-full h-full min-h-[10rem] text-center flex flex-col items-center justify-center space-y-4 p-4 hover:bg-gray-100 transition-colors duration-300 border-2 border-[#140a9a]"
-                                        >
-                                            <WrenchIcon className="h-12 w-12 sm:h-16 sm:w-16 text-[#140a9a]" />
-                                            <div>
-                                                <h3 className="text-lg sm:text-xl font-semibold text-[#140a9a]">Mantenimiento</h3>
-                                                <p className="text-xs sm:text-sm text-gray-600">Registrar tareas realizadas</p>
-                                            </div>
-                                        </Button>
-                                    </Link>
-
-                                    <Link href="/misc" passHref className="block h-full">
-                                        <Button
-                                            variant="outline"
-                                            className="w-full h-full min-h-[10rem] text-center flex flex-col items-center justify-center space-y-4 p-4 hover:bg-gray-100 transition-colors duration-300 border-2 border-[#140a9a]"
-                                        >
-                                            <BoxIcon className="h-12 w-12 sm:h-16 sm:w-16 text-[#140a9a]" />
-                                            <div>
-                                                <h3 className="text-lg sm:text-xl font-semibold text-[#140a9a]">Misceláneos</h3>
-                                                <p className="text-xs sm:text-sm text-gray-600">Funcionalidades adicionales</p>
-                                            </div>
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </main>
-                </div>
-            </Layout>
-        </ProtectedRoute>
-    )
+  const menuItems = [
+    {
+      href: "/attendance",
+      icon: ClipboardListIcon,
+      title: "Registro de Asistencia",
+    },
+    { href: "/admin", icon: ShieldIcon, title: "Administración" },
+    { href: "/maintenance", icon: WrenchIcon, title: "Mantenimiento" },
+    { href: "/misc", icon: BoxIcon, title: "Misceláneos" },
+  ];
+  return (
+    <ProtectedRoute>
+      <MainLayout>
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12">
+          <main className="flex-grow container mx-auto px-4">
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl md:text-5xl font-bold text-[#140a9a] tracking-tight mb-12 text-center"
+            >
+              Ayudante Mantenimiento
+            </motion.h1>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {menuItems.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Link href={item.href} passHref>
+                    <Card className="h-full hover:shadow-lg transition-all duration-300 border-2 border-[#140a9a] rounded-lg overflow-hidden hover:bg-[#140a9a] group">
+                      <CardContent className="p-6 flex flex-col items-center text-center h-full justify-center">
+                        <item.icon className="h-12 w-12 text-[#140a9a] group-hover:text-white mb-4 transition-colors duration-300" />
+                        <h2 className="text-lg font-semibold text-[#140a9a] group-hover:text-white transition-colors duration-300">
+                          {item.title}
+                        </h2>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </main>
+        </div>
+      </MainLayout>
+    </ProtectedRoute>
+  );
 }
