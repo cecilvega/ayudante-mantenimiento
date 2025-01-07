@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { ComponentChangeoutTask } from "@/lib/types";
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -224,7 +224,7 @@ export const ComponentChangeoutCard = ({
                                     key={idx}
                                     className="relative aspect-square group"
                                   >
-                                    <img
+                                    <Image
                                       src={url}
                                       alt={`${subComponent} ${idx + 1}`}
                                       className="w-full h-full object-cover rounded-md cursor-pointer border border-gray-300 transition-all duration-300 group-hover:opacity-75"

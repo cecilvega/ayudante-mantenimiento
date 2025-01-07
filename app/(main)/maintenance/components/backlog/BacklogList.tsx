@@ -26,7 +26,7 @@ export function BacklogList({
   useEffect(() => {
     console.log("Loading backlogs for equipment:", equipment.equipmentName);
     loadBacklogs();
-  }, [loadBacklogs]);
+  }, [loadBacklogs, equipment.equipmentName]);
 
   if (isLoading) {
     return (

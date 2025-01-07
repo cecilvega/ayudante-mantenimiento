@@ -17,7 +17,7 @@ import { ComponentChangeoutTask, EquipmentRecord } from "@/lib/types";
 import { Timestamp } from "firebase/firestore";
 import { useComponentContext } from "./contexts";
 import { subComponentsTaxonomy } from "@/app/(main)/maintenance/constants";
-
+import Image from "next/image";
 interface ChangeoutEditFormProps {
   onBack: () => void;
   component: ComponentChangeoutTask;
@@ -407,7 +407,7 @@ export function ComponentChangeoutEdit({
                             subComponent
                           ]?.images?.map((url, idx) => (
                             <div key={idx} className="relative group">
-                              <img
+                              <Image
                                 src={url}
                                 alt={`${subComponent} ${idx + 1}`}
                                 className="w-full h-24 object-cover rounded"

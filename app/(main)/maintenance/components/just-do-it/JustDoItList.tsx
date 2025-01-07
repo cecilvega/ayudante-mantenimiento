@@ -28,7 +28,7 @@ export function JustDoItList({
       equipment.equipmentName,
     );
     loadJustDoIts();
-  }, [loadJustDoIts]);
+  }, [loadJustDoIts, equipment.equipmentName]);
 
   if (isLoading) {
     return (

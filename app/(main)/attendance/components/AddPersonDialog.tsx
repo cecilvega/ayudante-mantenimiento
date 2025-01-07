@@ -22,7 +22,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { useAttendanceContext } from "../contexts";
+import { useAttendanceContext } from "./contexts";
 import { PersonaRecord, AddAttendanceParams } from "@/lib/types";
 
 export default function AddPersonDialog() {

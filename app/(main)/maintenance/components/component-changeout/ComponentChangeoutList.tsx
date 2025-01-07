@@ -27,7 +27,6 @@ export function ComponentChangeoutList({
     loadComponentChangeouts,
     isLoading,
     componentTasks,
-    setComponentTasks,
   } = useComponentContext();
 
   useEffect(() => {
@@ -39,6 +38,7 @@ export function ComponentChangeoutList({
     loadComponentChangeouts();
   }, [
     loadComponentChangeouts,
+    equipment.equipmentName,
     selectedComponent.componentName,
     selectedComponent.positionName,
   ]);

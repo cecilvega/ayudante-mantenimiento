@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/tooltip";
 import AddPersonDialog from "./AddPersonDialog";
 import { DatePicker } from "./DatePicker";
-import { useAttendanceContext } from "../contexts";
+import { useAttendanceContext } from "./contexts";
 
 export default function AttendanceHeader() {
   const { selectedDate, setSelectedDate, setSelectedTurno, isDayMode } =

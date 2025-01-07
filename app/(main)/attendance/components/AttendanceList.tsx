@@ -21,7 +21,7 @@ import {
   UserIcon,
   UsersIcon,
 } from "lucide-react";
-import { useAttendanceContext } from "../contexts";
+import { useAttendanceContext } from "./contexts";
 import { AttendanceRecord, Cama, EstadoAsistencia } from "@/lib/types";
 import {
   ESTADOS_ASISTENCIA,

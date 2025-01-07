@@ -20,11 +20,10 @@ export async function fetchJustDoIts(equipmentName?: string) {
     conditions.push(where("equipmentName", "==", equipmentName));
   }
 
-  // Only get tasks from the last 7 days or pending tasks
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-
-  conditions.push(where("createdAt", ">=", Timestamp.fromDate(sevenDaysAgo)));
+  // Get tasks from the last month
+  const monthAgo = new Date();
+  monthAgo.setMonth(monthAgo.getMonth() - 1);
+  conditions.push(where("startDate", ">=", Timestamp.fromDate(monthAgo)));
 
   const q = query(collection(db, "just_do_its"), ...conditions);
 
@@ -36,14 +35,8 @@ export async function fetchJustDoIts(equipmentName?: string) {
       [doc.id]: {
         id: doc.id,
         ...data,
-        createdAt:
-          data.createdAt instanceof Timestamp
-            ? data.createdAt.toDate().toISOString()
-            : data.createdAt,
-        completedAt:
-          data.completedAt instanceof Timestamp
-            ? data.completedAt.toDate().toISOString()
-            : data.completedAt,
+        startDate: data.startDate, // Keep as Timestamp
+        endDate: data.endDate, // Keep as Timestamp
       },
     };
   }, {});
@@ -51,17 +44,27 @@ export async function fetchJustDoIts(equipmentName?: string) {
 
 export async function updateJustDoIt(
   id: string,
-  updates: Partial<JustDoItTask>,
+  updates: Partial<JustDoItTask> & { duration?: number },
 ) {
   console.log("Attempting to update just do it task:", id);
   const docRef = doc(db, "just_do_its", id);
 
-  // If status is being updated to completed, add completedAt timestamp
-  if (updates.status === "completed" && !updates.completedAt) {
-    updates.completedAt = new Date().toISOString();
+  // Handle duration-based updates
+  const processedUpdates = { ...updates };
+
+  // If we have both startDate and duration, calculate endDate
+  if (updates.startDate && "duration" in updates) {
+    const duration = updates.duration as number;
+    const startDate = updates.startDate;
+    const endDate = Timestamp.fromDate(
+      new Date(startDate.toMillis() + duration * 60 * 60 * 1000),
+    );
+
+    delete processedUpdates.duration; // Remove duration from updates
+    processedUpdates.endDate = endDate; // Add calculated endDate
   }
 
-  await updateDoc(docRef, updates);
+  await updateDoc(docRef, processedUpdates);
 }
 
 export async function removeJustDoIt(id: string): Promise<void> {

@@ -16,10 +16,11 @@ interface ComponentContextType {
   setSelectedComponent: React.Dispatch<React.SetStateAction<SelectedComponent>>; // Match useState type
 
   equipment: EquipmentRecord;
-  componentTasks: ComponentChangeoutTask[];
+  componentTasks: Record<string, ComponentChangeoutTask>; // CHANGED
   setComponentTasks: React.Dispatch<
-    React.SetStateAction<ComponentChangeoutTask[]>
-  >;
+    React.SetStateAction<Record<string, ComponentChangeoutTask>>
+  >; // CHANGED
+
   addComponentTask: (task: Partial<ComponentChangeoutTask>) => void;
   handleUpdateChangeout: (
     id: string,
