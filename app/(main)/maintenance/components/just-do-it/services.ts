@@ -11,9 +11,7 @@ export function useJustDoItTasks(equipment: EquipmentRecord) {
   const addJustDoItTask = (
     task: Partial<JustDoItTask> & { duration: number },
   ) => {
-    const startDate = Timestamp.fromDate(
-      new Date(task.startDate || new Date()),
-    );
+    const startDate = task.startDate || Timestamp.fromDate(new Date());
     const endDate = Timestamp.fromDate(
       new Date(startDate.toMillis() + task.duration * 60 * 60 * 1000),
     );
@@ -43,7 +41,8 @@ export function useJustDoItTasks(equipment: EquipmentRecord) {
     updates: Partial<JustDoItTask> & { duration?: number },
   ) => {
     if (updates.startDate && updates.duration) {
-      const startDate = Timestamp.fromDate(new Date(updates.startDate));
+      const startDate = updates.startDate || Timestamp.fromDate(new Date());
+
       const endDate = Timestamp.fromDate(
         new Date(startDate.toMillis() + updates.duration * 60 * 60 * 1000),
       );

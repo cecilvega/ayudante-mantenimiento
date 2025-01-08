@@ -22,6 +22,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { JustDoItTask, EquipmentRecord } from "@/lib/types";
 import { useJustDoItContext } from "./contexts";
 import { backlogTaxonomy } from "../../constants";
+import { Timestamp } from "firebase/firestore";
 
 interface JustDoItEditFormProps {
   onBack: () => void;
@@ -130,7 +131,7 @@ export function JustDoItEdit({
         system: formData.system,
         position: formData.position,
         duration: parseFloat(formData.duration),
-        startDate: new Date(formData.startDate),
+        startDate: Timestamp.fromDate(new Date(formData.startDate)), // Convert to Timestamp
       });
 
       onBack();
