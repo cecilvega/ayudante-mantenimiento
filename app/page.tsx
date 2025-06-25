@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  BoxIcon,
+  Puzzle,
   ClipboardListIcon,
   ShieldIcon,
   WrenchIcon,
@@ -22,7 +22,8 @@ export default function Home() {
     },
     { href: "/admin", icon: ShieldIcon, title: "Administración" },
     { href: "/maintenance", icon: WrenchIcon, title: "Mantenimiento" },
-    { href: "/misc", icon: BoxIcon, title: "Misceláneos" },
+    { title: "Asesor Técnico", href: "/asesor-tecnico", icon: Puzzle },
+
   ];
   return (
     <ProtectedRoute>
